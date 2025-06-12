@@ -1,0 +1,8 @@
+date_of_order = r"\d{4}-\d{2}-\d{2}"
+part_number = r"([A-Z0-9]{4}-[A-Z0-9]{5,6}-[A-Z0-9]{1,4})"
+effective_date_a = r"(?:Effective\sDate\s)\d{4}-\d{2}-\d{2}"
+effective_date_b = r"\s+(\d{4}-\d{2}-\d{2})"
+price_a = r"(?:<=\sPrice\s)(\d{1,3}\.\d{2,5})"
+price_b = r"(\d{1,3}\.\d{2,5})"
+ship_from_code = r"G281U|G281R|EAY0J"
+plant = r"FCSD|5101|3313|5111|5187|8377"
