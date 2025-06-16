@@ -1,0 +1,19 @@
+# Virtual environment
+.venv/
+env/
+
+# Byte-code files
+__pycache__/
+*.pyc
+
+# IDE specific files
+.vscode/
+
+# Data files (if you don't want to track large data)
+*.csv
+*.xlsx
+*.db
+
+# Operating System files
+.DS_Store
+Thumbs.db
