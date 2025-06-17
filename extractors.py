@@ -22,4 +22,69 @@ def get_part_number(text):
                Regex[{mre.part_number}];
                Exception[{e}])
                """
+
+def get_date_of_order(text):
+    substring = text[0:320]
+    try:
+        match = re.search(mre.date_of_order, substring)
+        if match:
+            date_of_order = match.group()
+            return date_of_order
+        else:
+            return f"Date of order not found"
+    except Exception as e:
+        return f"""
+               Exception in function {get_definition_name}();
+               Substring [{substring}];
+               Regex[{mre.date_of_order}];
+               Exception[{e}])
+               """
     
+def get_price(text):
+    substring = text[1500:2000]
+    used_regex = None
+    try:
+        match_a = re.findall(mre.price_a, substring)
+        if not match_a:
+            match = re.findall(mre.price_b, substring)
+            used_regex = mre.price_b
+            price = match[0]
+            return price
+        elif match_a:
+            used_regex = mre.price_a
+            price = match_a[0]
+            return price
+        else:
+            return f"Price not found"
+    except Exception as e:
+        return f"""
+               Exception in function {get_definition_name}();
+               Substring [{substring}];
+               Regex[{used_regex}];
+               Exception[{e}])
+               """
+
+def get_effective_date(text):
+    substring = text[1500:2000]
+    used_regex = None
+    try:
+        match_a = re.search(mre.effective_date_a, substring)
+        if not match_a:
+            match = re.findall(mre.effective_date_b, substring)
+            used_regex = mre.effective_date_b
+            effective_date = match[0]
+            return effective_date
+        elif match_a:
+            used_regex = mre.effective_date_a
+            match = match_a.group()
+            effective_date = match[-10:]
+            return effective_date
+        else:
+            return f"Effective date not found"
+    except Exception as e:
+        return f"""
+               Exception in function {get_definition_name}();
+               Substring [{substring}];
+               Regex[{used_regex}];
+               Exception[{e}])
+               """
