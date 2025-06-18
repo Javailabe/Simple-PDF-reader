@@ -88,3 +88,36 @@ def get_effective_date(text):
                Regex[{used_regex}];
                Exception[{e}])
                """
+    
+def get_ship_from_code(text):
+    substring = text[1500:2000]
+    try:
+        match = re.findall(mre.ship_from_code, substring)
+        if match:
+            ship_from_code = match[-1]
+            return ship_from_code
+        else:
+            return f"Ship from code not found"
+    except Exception as e:
+        return f"""
+               Exception in function {get_definition_name}();
+               Substring [{substring}];
+               Regex[{mre.ship_from_code}];
+               Exception[{e}])
+               """
+def get_plant(text):
+    substring = text[1500:2000]
+    try: 
+        match = re.findall(mre.plant, substring)
+        if match:
+            plant = match[-1]
+            return plant
+        else:
+            return f"Plant not found"
+    except Exception as e:
+        return f"""
+               Exception in function {get_definition_name}();
+               Substring [{substring}];
+               Regex[{mre.plant}];
+               Exception[{e}])
+               """

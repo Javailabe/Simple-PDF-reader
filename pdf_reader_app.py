@@ -1,19 +1,19 @@
 import os
 import fitz
 import pandas as pd
-import extractors
+import extractors as ext
 
 def read_data(file):
     try:
         pdf_document = fitz.open(file)
         page_ref = pdf_document.load_page[0]
         text = page_ref.get_text()
-
-        date_of_order = get_date_of_order(text)
-        part_number = get_part_number(text)
-        price = get_price(text)
-        effective_date = get_effective_date(text)
-        ship_from_code = get_ship_from_code(text)
+        
+        date_of_order = ext.get_date_of_order(text)
+        part_number = ext.get_part_number(text)
+        price = ext.get_price(text)
+        effective_date = ext.get_effective_date(text)
+        ship_from_code = ext.get_ship_from_code(text)
         plant = get_plant(text)
 
         extracted_values = {
